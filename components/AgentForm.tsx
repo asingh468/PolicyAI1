@@ -1,57 +1,40 @@
-'use client';
-import { useState } from 'react';
+// components/AgentForm.tsx
+"use client";
 
-export default function AgentForm({ onGenerated }: { onGenerated: (text: string) => void }) {
-  const [form, setForm] = useState({
-    agentName: '',
-    brokerage: '',
-    clientName: '',
-    propertyAddress: '',
-    confidentialInfo: '',
-    duration: '',
-    state: 'California',
-  });
+import React, { useState } from "react";
 
-  const [loading, setLoading] = useState(false);
+export default function AgentForm({ setResult }: { setResult: (text: string) => void }) {
+  const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
-
-    const prompt = `Create a real estate agent confidentiality agreement for California:
-Agent: ${form.agentName}
-Brokerage: ${form.brokerage}
-Client: ${form.clientName}
-Property: ${form.propertyAddress}
-Confidential Info: ${form.confidentialInfo}
-Duration: ${form.duration}.
-Use professional legal formatting.`;
-
-    const res = await fetch('/api/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt }),
-    });
-
-    const data = await res.json();
-    setLoading(false);
-    onGenerated(data.text);
-  };
+    // You can add your API call here
+    setResult(`Generated agreement for ${name} from ${company}`);
+  }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <input type="text" name="agentName" placeholder="Agent Name" onChange={handleChange} required />
-      <input type="text" name="brokerage" placeholder="Brokerage" onChange={handleChange} required />
-      <input type="text" name="clientName" placeholder="Client Name" onChange={handleChange} required />
-      <input type="text" name="propertyAddress" placeholder="Property Address" onChange={handleChange} required />
-      <textarea name="confidentialInfo" placeholder="Confidential Info" onChange={handleChange} required />
-      <input type="text" name="duration" placeholder="Duration (e.g., 12 months)" onChange={handleChange} required />
-      <button type="submit" disabled={loading}>
-        {loading ? 'Generating...' : 'Generate Agreement'}
+    <form onSubmit={onSubmit} style={{ maxWidth: "400px" }}>
+      <label>
+        Agent Name:
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          style={{ width: "100%", marginBottom: "10px" }}
+        />
+      </label>
+      <label>
+        Company:
+        <input
+          type="text"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          style={{ width: "100%", marginBottom: "10px" }}
+        />
+      </label>
+      <button type="submit" style={{ padding: "8px 12px" }}>
+        Generate
       </button>
     </form>
   );
