@@ -1,23 +1,27 @@
-'use client'; // ✅ This must be at the very top
+// app/page.tsx
+"use client";
 
-import { useState } from 'react';
-import AgentForm from '../components/AgentForm';
+import { useState } from "react";
+import AgentForm from "../components/AgentForm";
 
-export default function HomePage() {
-  const [generatedAgreement, setGeneratedAgreement] = useState('');
+export default function Home() {
+  const [result, setResult] = useState("");
 
   return (
-    <main style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
-      <h1>Agent Confidentiality Agreement Generator</h1>
-      <AgentForm onGenerated={setGeneratedAgreement} />
-
-      {generatedAgreement && (
-        <div style={{ marginTop: '2rem', whiteSpace: 'pre-wrap', background: '#f5f5f5', padding: '1rem', borderRadius: '5px' }}>
-          <h2>Generated Agreement</h2>
-          <p>{generatedAgreement}</p>
-        </div>
-      )}
+    <main style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h1>PolicyAI1 - Generate Confidentiality Agreements</h1>
+      <AgentForm setResult={setResult} />
+      <pre
+        style={{
+          whiteSpace: "pre-wrap",
+          backgroundColor: "#f4f4f4",
+          padding: "10px",
+          marginTop: "20px",
+          borderRadius: "4px",
+        }}
+      >
+        {result}
+      </pre>
     </main>
   );
 }
-
