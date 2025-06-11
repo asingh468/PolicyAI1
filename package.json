@@ -8,9 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "13.x",          // or your installed version
+    "next": "13.x",
     "react": "18.x",
     "react-dom": "18.x"
   }
 }
+
 
