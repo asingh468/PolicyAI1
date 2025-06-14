@@ -1,93 +1,71 @@
-// pages/index.tsx
-import Head from "next/head";
-
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>PolicyAI – AI-Powered Real Estate Documents</title>
-        <meta name="description" content="Generate real estate documents with AI. Save time, stay compliant, and close faster." />
-      </Head>
+    <main className="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-900">
+      {/* Navigation */}
+      <nav className="flex items-center justify-between px-8 py-6 bg-white shadow-md">
+        <div className="text-2xl font-bold text-blue-600">PolicyAI</div>
+        <div className="space-x-6 text-gray-700 font-medium">
+          <a href="#features" className="hover:text-blue-600 transition">Features</a>
+          <a href="#how-it-works" className="hover:text-blue-600 transition">How It Works</a>
+          <a href="#pricing" className="hover:text-blue-600 transition">Pricing</a>
+          <a href="#contact" className="hover:text-blue-600 transition">Contact</a>
+        </div>
+      </nav>
 
-      <main className="bg-white text-gray-800">
-        {/* HERO SECTION */}
-        <section
-          className="bg-cover bg-center h-[90vh] flex items-center justify-center text-center text-white"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1400&q=80')`,
-          }}
-        >
-          <div className="bg-black/60 p-8 rounded-xl">
-            <h1 className="text-5xl font-bold mb-4">Welcome to PolicyAI</h1>
-            <p className="text-xl mb-6">
-              Instantly generate compliant real estate documents using AI.
-            </p>
-            <a
-              href="#features"
-              className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-            >
-              Learn More
-            </a>
+      {/* Hero Section */}
+      <section className="text-center py-24 px-6 bg-gradient-to-r from-blue-50 via-white to-blue-100">
+        <h1 className="text-5xl font-bold leading-tight text-gray-900 mb-6">
+          Instantly Generate Cybersecurity & Compliance Policies
+        </h1>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+          PolicyAI helps small businesses create SOC 2, HIPAA, and privacy policies with ease — just fill out a simple form.
+        </p>
+        <a href="/start" className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-xl shadow hover:bg-blue-700 transition">
+          Get Started
+        </a>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 px-6 bg-white text-center">
+        <h2 className="text-3xl font-bold mb-12">Features</h2>
+        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">AI-Driven Forms</h3>
+            <p className="text-gray-600">Answer simple questions to generate complex policies instantly.</p>
           </div>
-        </section>
-
-        {/* ABOUT SECTION */}
-        <section className="max-w-6xl mx-auto px-4 py-20 text-center">
-          <h2 className="text-3xl font-bold mb-6">What is PolicyAI?</h2>
-          <p className="text-gray-600 text-lg">
-            PolicyAI is an AI-powered tool that helps real estate professionals create customized legal documents like confidentiality agreements, buyer contracts, and disclosures. No legal team needed. Just fill a quick form — and our system generates a ready-to-use document tailored to your needs.
-          </p>
-        </section>
-
-        {/* FEATURES */}
-        <section id="features" className="bg-gray-50 py-20">
-          <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-12 text-center">
-            <div>
-              <img
-                src="https://img.icons8.com/fluency/96/contract.png"
-                alt="Contracts icon"
-                className="mx-auto mb-4"
-              />
-              <h3 className="text-xl font-semibold mb-2">Instant Legal Docs</h3>
-              <p className="text-gray-600">Generate NDAs, Buyer Agreements, and more in under 60 seconds.</p>
-            </div>
-            <div>
-              <img
-                src="https://img.icons8.com/fluency/96/artificial-intelligence.png"
-                alt="AI icon"
-                className="mx-auto mb-4"
-              />
-              <h3 className="text-xl font-semibold mb-2">Powered by AI</h3>
-              <p className="text-gray-600">Trained on real estate legal best practices and patterns.</p>
-            </div>
-            <div>
-              <img
-                src="https://img.icons8.com/fluency/96/cloud-check.png"
-                alt="Compliance icon"
-                className="mx-auto mb-4"
-              />
-              <h3 className="text-xl font-semibold mb-2">Compliant & Secure</h3>
-              <p className="text-gray-600">Built with security and document compliance in mind.</p>
-            </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Compliance Ready</h3>
+            <p className="text-gray-600">Policies align with SOC 2, HIPAA, and CCPA requirements.</p>
           </div>
-        </section>
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Editable & Branded</h3>
+            <p className="text-gray-600">Download, customize, and add your logo before sharing with clients or auditors.</p>
+          </div>
+        </div>
+      </section>
 
-        {/* CTA */}
-        <section className="bg-primary text-white py-20 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to automate your real estate paperwork?</h2>
-          <a
-            href="/documents"
-            className="bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition"
-          >
-            Start Generating Docs
-          </a>
-        </section>
-
-        {/* FOOTER */}
-        <footer className="text-center py-6 text-sm text-gray-500">
-          © {new Date().getFullYear()} PolicyAI. Not a substitute for legal advice.
-        </footer>
-      </main>
-    </>
+      {/* Footer */}
+      <footer className="bg-gray-800 text-gray-300 py-10 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 text-sm">
+          <div>
+            <h4 className="text-white font-semibold mb-2">PolicyAI</h4>
+            <p>© {new Date().getFullYear()} PolicyAI Inc. All rights reserved.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold mb-2">Quick Links</h4>
+            <ul>
+              <li><a href="#features" className="hover:text-white">Features</a></li>
+              <li><a href="#how-it-works" className="hover:text-white">How It Works</a></li>
+              <li><a href="#pricing" className="hover:text-white">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold mb-2">Contact</h4>
+            <p>Email: support@policyai.app</p>
+            <p>San Francisco, CA</p>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }
